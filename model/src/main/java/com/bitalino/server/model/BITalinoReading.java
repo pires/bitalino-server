@@ -14,7 +14,6 @@ package com.bitalino.server.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,9 +39,7 @@ public class BITalinoReading {
   @Column(name = "timestamp", nullable = false)
   private long timestamp;
 
-  @OneToMany(cascade = { CascadeType.ALL },
-      fetch = FetchType.EAGER,
-      orphanRemoval = true)
+  @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
   private List<BITalinoFrame> frames;
 
   public BITalinoReading() {

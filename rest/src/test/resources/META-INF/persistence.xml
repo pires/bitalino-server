@@ -15,11 +15,10 @@
       <property name="hibernate.transaction.jta.platform"
         value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
       <property name="hibernate.connection.url" value="jdbc:derby:memory:db" />
-      <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect />
       <property name="hibernate.hbm2ddl.auto" value="create" />
       <property name="hibernate.show_sql" value="true" />
-      <property name="hibernate.id.new_generator_mappings"
-        value="true" />
+      <property name="hibernate.id.new_generator_mappings" value="true" />
     </properties>
   </persistence-unit>
 

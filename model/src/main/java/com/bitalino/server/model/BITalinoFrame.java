@@ -20,23 +20,7 @@ public class BITalinoFrame {
 
   public BITalinoFrame() {
   }
-
-  public int getCRC() {
-    return crc;
-  }
-
-  public void setCRC(int cRC) {
-    crc = cRC;
-  }
-
-  public int getSequence() {
-    return seq;
-  }
-
-  public void setSequence(int seq) {
-    this.seq = seq;
-  }
-
+  
   public long getId() {
     return id;
   }
@@ -45,12 +29,20 @@ public class BITalinoFrame {
     this.id = id;
   }
 
-  public int getCrc() {
+  public int getCRC() {
     return crc;
   }
 
-  public void setCrc(int crc) {
+  public void setCRC(int crc) {
     this.crc = crc;
+  }
+
+  public int getSequence() {
+    return seq;
+  }
+
+  public void setSequence(int seq) {
+    this.seq = seq;
   }
 
   public int[] getAnalog() {

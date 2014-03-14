@@ -82,4 +82,9 @@ public class ReadingDto {
     return entity;
   }
 
+  @Override
+  public String toString() {
+    return "ReadingDto [timestamp=" + timestamp + ", frames=" + frames.size() + "]";
+  }
+
 }

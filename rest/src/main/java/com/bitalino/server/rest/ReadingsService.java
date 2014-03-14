@@ -41,7 +41,9 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.bitalino.server.dao.BITalinoFrameDao;
 import com.bitalino.server.dao.BITalinoReadingDao;
+import com.bitalino.server.model.BITalinoFrame;
 import com.bitalino.server.model.BITalinoReading;
 import com.bitalino.server.rest.api.ReadingDto;
 
@@ -52,14 +54,22 @@ public class ReadingsService {
       .getLogger(ReadingsService.class);
 
   @EJB
-  private BITalinoReadingDao dao;
+  private BITalinoReadingDao readingDao;
+
+  @EJB
+  private BITalinoFrameDao frameDao;
 
   @PUT
   @Consumes(MediaType.APPLICATION_JSON)
   public Response handleNewReading(final ReadingDto dto) {
     logger.info("Received new reading {}", dto);
     checkNotNull(dto);
-    dao.create(ReadingDto.toEntity(dto));
+
+    BITalinoReading reading = ReadingDto.toEntity(dto);
+    for (BITalinoFrame frame : reading.getFrames())
+      frameDao.create(frame);
+    readingDao.create(reading);
+
     return Response.ok().build();
   }
 
@@ -74,7 +84,7 @@ public class ReadingsService {
   @Produces(MediaType.APPLICATION_JSON)
   public List<ReadingDto> retrieveReadingsSince(
       @QueryParam("since") final long since) {
-    return ReadingDto.fromEntities(dao.find_all_readings_since(since));
+    return ReadingDto.fromEntities(readingDao.find_all_readings_since(since));
 
   }
 

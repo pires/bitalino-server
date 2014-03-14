@@ -22,11 +22,11 @@ public class FrameDto {
     this.crc = crc;
   }
 
-  public int getSequence() {
+  public int getSeq() {
     return seq;
   }
 
-  public void setSequence(int seq) {
+  public void setSeq(int seq) {
     this.seq = seq;
   }
 
@@ -51,7 +51,7 @@ public class FrameDto {
     dto.setAnalog(frame.getAnalog());
     dto.setDigital(frame.getDigital());
     dto.setCrc(frame.getCRC());
-    dto.setSequence(frame.getSequence());
+    dto.setSeq(frame.getSequence());
     return dto;
   }
 
@@ -59,8 +59,8 @@ public class FrameDto {
     BITalinoFrame frame = new BITalinoFrame();
     frame.setAnalog(dto.getAnalog());
     frame.setDigital(dto.getDigital());
-    frame.setCrc(dto.getCrc());
-    frame.setSequence(dto.getSequence());
+    frame.setCRC(dto.getCrc());
+    frame.setSequence(dto.getSeq());
     return frame;
   }
 
