@@ -66,7 +66,7 @@ public class ReadingServiceTest {
     assertEquals(response.getStatus(), 200);
     final String json = response.readEntity(String.class);
     final List<ReadingDto> dtos = new Gson().fromJson(json, readingType);
-    assertEquals(dtos.size(), max);
+    assertEquals(dtos.size(), dao.find_all_readings_since(since).size());
   }
 
   private static Object getBean(String entity) throws NamingException {

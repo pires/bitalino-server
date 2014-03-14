@@ -58,9 +58,11 @@ public class ReadingDto {
   public static ReadingDto fromEntity(final BITalinoReading entity) {
     ReadingDto dto = new ReadingDto();
     dto.setTimestamp(entity.getTimestamp());
-    List<FrameDto> readings = new ArrayList<FrameDto>(entity.getFrames().size());
+    List<FrameDto> readingFrames = new ArrayList<FrameDto>(entity.getFrames()
+        .size());
     for (BITalinoFrame frame : entity.getFrames())
-      readings.add(FrameDto.fromEntity(frame));
+      readingFrames.add(FrameDto.fromEntity(frame));
+    dto.setFrames(readingFrames);
     return dto;
   }
 
@@ -84,7 +86,8 @@ public class ReadingDto {
 
   @Override
   public String toString() {
-    return "ReadingDto [timestamp=" + timestamp + ", frames=" + frames.size() + "]";
+    return "ReadingDto [timestamp=" + timestamp + ", frames=" + frames.size()
+        + "]";
   }
 
 }
